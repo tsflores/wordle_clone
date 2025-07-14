@@ -1,0 +1,278 @@
+/* Styling elements for the Wordle app */
+/* Where possible, referenced the NY Times version of the game to get specific colors */
+/* basic styling elements are structured for a mobile device in portrait mode */
+
+* {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --page-font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    --tile-border-color: #d3d6da;
+    --tile-answer-wrong-place: #c9b458;
+    --tile-answer-right: #6aaa64;
+    --tile-answer-wrong: #3a3a3c;
+    --btn-hover: #bf2e1a;
+    --btn-color: rgb(91, 101, 246);
+}
+
+body {
+    margin: 0;
+    font-family: var(--page-font-family);
+}
+
+hr {
+    border-color: var(--tile-border-color);
+    width: 600px;
+}
+
+#answer{
+    padding-top: 1.5rem;
+    text-align: center;
+    color: var(--btn-hover);
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.buttons{
+    display: flex;
+    width: 600px;
+    margin: auto;
+    padding-top: 1rem;
+}
+
+.btn{
+    border: none;
+    font: var(--page-font-family);
+    font-size: 4vw;
+    background-color: white;
+    font-weight: bold;
+    color: var(--btn-color);
+}
+
+.btn:hover{
+    background-color: var(--btn-hover);
+    color: white;
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.25rem;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    font-size: 7vw;
+    font-weight: bold;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.boardWrapper {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+}
+
+#board {
+    margin: 0;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
+    width: 600px;
+    height: 600px;
+}
+
+.rows {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+    justify-content: center;
+}
+
+.tiles {
+    border: solid 2px var(--tile-border-color);
+    display: flex;
+    font-size: 5vw;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+}
+
+#keyBoard {
+    width: 100%;
+    margin: 0 8px;
+    padding: 0 1rem;
+}
+
+.keyBoardRow {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.key {
+    font-size: 4vw;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    margin: 0 6px 0 0;
+    height: 100px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--tile-border-color);
+    flex: 1 1 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+#Key {
+    background-color: white;
+    cursor: default;
+}
+
+.tile-wrong, .key.key-wrong {
+    background-color: var(--tile-answer-wrong);
+    color: white;
+    border: none;
+}
+
+.tile-right, .key.key-right {
+    background-color: var(--tile-answer-right);
+    color: white;
+    border: none;
+}
+
+.tile-wrong-place, .key.key-wrong-place {
+    background-color: var(--tile-answer-wrong-place);
+    color: white;
+    border: none;
+}
+
+
+/* Source for animation: https://www.w3schools.com/css/css3_animations.asp */
+.animated {
+    animation: flip 1s ease;
+  }
+
+@keyframes flip {
+    0% {
+      transform: scaleY(1);
+    }
+    30% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+
+
+/* media queries to handle different screen widths and heights */
+/* for larger screens on a monitor */
+@media screen and (min-width: 1400px){
+
+    main {
+        height: 500px;
+        
+    }
+
+    h1 {
+        font-size: 2vw;
+    }
+
+    #board {
+        width: 280px;
+        height: 300px;
+    }
+
+    .boardWrapper {
+        align-items: flex-start;
+    }
+
+    .key {
+        height: 36px;
+        font-size: 1vw;
+    }
+
+    #keyBoard{
+        width: 40%;
+    }
+
+    .tiles{
+        font-size: 1.25vw;
+    }
+
+    .buttons{
+        width: 300px;
+        margin: auto;
+    }
+    
+    .btn{
+        font-size: 1.25rem;
+        
+    }
+
+    #answer{
+        font-size: 24px;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1390px) {
+
+    main {
+        height: 525px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    #board {
+        width: 300px;
+        height: 320px;
+    }
+
+    .boardWrapper {
+        align-items: flex-start;
+    }
+
+    .key {
+        height: 40px;
+        font-size: 2vw;
+    }
+
+    #keyBoard{
+        width: 60%;
+    }
+
+    .tiles{
+        font-size: 2.5vw;
+    }
+
+    .btn{
+        font-size: 1.25rem;
+        
+    }
+
+    #answer{
+        font-size: 24px;
+    }
+
+    .buttons{
+        width: 275px;
+    }
+}
