@@ -9,7 +9,7 @@ The application makes use of 2 free APIs requiring no keys or tokens:
 - https://dictionaryapi.dev/
 
 ## Live Demo
-[Play Wordle Clone](http://104.131.189.144:3000/index.html)
+[Play Wordle Clone](http://104.131.189.144:8000/index.html)
 
 ## Features
 - Guess 5 letter word 
