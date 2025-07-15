@@ -1,0 +1,26 @@
+{
+  "name": "wordle_clone",
+  "version": "1.0.0",
+  "description": "clone of NYT Wordle game",
+  "homepage": "https://github.com/tsflores/wordle_clone#readme",
+  "bugs": {
+    "url": "https://github.com/tsflores/wordle_clone/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsflores/wordle_clone.git"
+  },
+  "license": "ISC",
+  "author": "Trinidad Flores",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "start-dev": "nodemon --inspect app.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^4.21.2",
+    "http-errors": "^2.0.0",
+    "path-to-regexp": "^8.2.0"
+  }
+}

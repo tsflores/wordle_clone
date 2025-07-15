@@ -1,24 +1,60 @@
 
 //use Random Words API to generate an answer with length 5
-//used RapidAPI to get javascript
+//Random Words API can return 5 letter words that are not found in the dictonary.
+//include validation to make sure word returned by Ranom Words API is in the Free Dictonary API
+
 function getRandomWord() {
-  const data = null;
 
-  const xhr = new XMLHttpRequest();
-  xhr.withCredentials = false;  //no cookies
+  baseURL = 'api/randomword';
 
-  xhr.addEventListener('readystatechange', function () {
-    if (this.readyState === this.DONE) {
-      randomWord = this.responseText;
-      gameStatus.answer = randomWord;
-    }
-  });
+  const requestOptions = {
+  method: "GET",
+  redirect: "follow"
+};
 
-  xhr.open('GET', 'https://random-words5.p.rapidapi.com/getRandom?wordLength=5');
-  xhr.setRequestHeader('X-RapidAPI-Key', '78aa73499dmsh6cf4e39ff5b6bbdp14d7ecjsna90581a5dde0');
-  xhr.setRequestHeader('X-RapidAPI-Host', 'random-words5.p.rapidapi.com');
+// Function to validate word using Free Dictionary API
+  function validateWord(word) {
+    const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + word.toLowerCase();
+    
+    const options = {
+      method: 'GET',
+      redirect: 'follow'
+    };
 
-  xhr.send(data);
+    return fetch(url, options)
+      .then(response => response.ok); // Returns true if word is valid, false otherwise
+  }
+
+// Function to fetch and validate word
+  function fetchValidWord() {
+    fetch(baseURL, requestOptions)
+      .then((response) => response.json())
+      .then(async (result) => {
+        const randomWord = result[0];
+        console.log("Checking word: ", randomWord);
+        
+        // Validate the word
+        const isValid = await validateWord(randomWord);
+        
+        if (isValid) {
+          console.log("Valid word found: ", randomWord);
+          gameStatus.answer = randomWord.toLowerCase();
+        } else {
+          console.log("Invalid word, trying again...");
+          // Try again with a new word
+          fetchValidWord();
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching random word:", error);
+        // Fallback in case of error
+        gameStatus.answer = "hello";
+      });
+  }
+
+  // Start the process
+  fetchValidWord();
+
 }
 
 //globally scoped variables
@@ -42,9 +78,6 @@ const gameStatus = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-
-console.log(screen.width);
-console.log(screen.height);
 
   getRandomWord();
   createGameBoard(); //create the inital 5 x 6 matrix
@@ -179,15 +212,12 @@ console.log(screen.height);
 
     let letterCount = {}; //keep track of letter frequency within the answer through a key:value pair to be used for duplicate situations
 
-    //use the Words API to check if the guessed word is valid
-    const url = 'https://wordsapiv1.p.rapidapi.com/words/' + joinedGuess;
+    //use the Free Dictionary API to check if the guessed word is valid
+    const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + joinedGuess;
 
     const options = {
       method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': '78aa73499dmsh6cf4e39ff5b6bbdp14d7ecjsna90581a5dde0',
-        'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
-      }
+      redirect: 'follow'
     };
 
     fetch(url, options)

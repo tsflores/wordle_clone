@@ -9,7 +9,7 @@
 }
 
 :root {
-    --page-font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    --page-font-family: "Times New Roman", "Clear Sans", "Helvetica Neue", Arial, sans-serif;
     --tile-border-color: #d3d6da;
     --tile-answer-wrong-place: #c9b458;
     --tile-answer-right: #6aaa64;
@@ -21,116 +21,93 @@
 body {
     margin: 0;
     font-family: var(--page-font-family);
+    background-color: #f8f9fa;
 }
 
-hr {
-    border-color: var(--tile-border-color);
-    width: 600px;
-}
-
-#answer{
-    padding-top: 1.5rem;
-    text-align: center;
-    color: var(--btn-hover);
-    font-size: 48px;
+.game-title {
+    font-family: var(--page-font-family);
     font-weight: bold;
+    color: #212529;
+    margin-bottom: 1rem;
 }
 
-.buttons{
-    display: flex;
-    width: 600px;
-    margin: auto;
-    padding-top: 1rem;
+.game-controls {
+    margin-bottom: 1rem;
 }
 
-.btn{
+#answer {
+    color: var(--btn-hover);
+    font-weight: bold;
+    margin-top: 1rem;
+    min-height: 2rem;
+}
+
+.btn-game {
     border: none;
-    font: var(--page-font-family);
-    font-size: 4vw;
-    background-color: white;
+    font-family: var(--page-font-family);
     font-weight: bold;
     color: var(--btn-color);
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    transition: all 0.2s ease;
 }
 
-.btn:hover{
+.btn-game:hover {
     background-color: var(--btn-hover);
     color: white;
-    cursor: pointer;
-    border-radius: 1rem;
-    padding: 0.25rem;
+    transform: translateY(-1px);
 }
 
-h1 {
-    margin: 0;
-    text-align: center;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    font-size: 7vw;
-    font-weight: bold;
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.boardWrapper {
-    padding-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 800px;
+.game-board {
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 #board {
-    margin: 0;
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    grid-gap: 10px;
-    width: 600px;
-    height: 600px;
+    grid-gap: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .rows {
-    margin: 0;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
+    grid-gap: 0.25rem;
     justify-content: center;
 }
 
 .tiles {
-    border: solid 2px var(--tile-border-color);
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--tile-border-color);
     display: flex;
-    font-size: 5vw;
-    margin: 0;
     align-items: center;
     justify-content: center;
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: white;
 }
 
-#keyBoard {
-    width: 100%;
-    margin: 0 8px;
-    padding: 0 1rem;
+.virtual-keyboard {
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .keyBoardRow {
     display: flex;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    justify-content: center;
 }
 
 .key {
-    font-size: 4vw;
     font-weight: bold;
     border: 0;
-    padding: 0;
-    margin: 0 6px 0 0;
-    height: 100px;
-    border-radius: 4px;
+    padding: 0.75rem 0.25rem;
+    margin: 0 0.125rem;
+    border-radius: 0.25rem;
     cursor: pointer;
     background-color: var(--tile-border-color);
     flex: 1 1 0%;
@@ -138,141 +115,96 @@ main {
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
+    font-size: 0.875rem;
+    max-width: 2.5rem;
+    min-height: 2.5rem;
+}
+
+.key[id="Enter"],
+.key[id="Backspace"] {
+    flex: 1.5 1 0%;
+    max-width: 4rem;
+    font-size: 0.75rem;
 }
 
 #Key {
-    background-color: white;
+    background-color: transparent;
     cursor: default;
 }
 
-.tile-wrong, .key.key-wrong {
+.tile-wrong,
+.key.key-wrong {
     background-color: var(--tile-answer-wrong);
     color: white;
     border: none;
 }
 
-.tile-right, .key.key-right {
+.tile-right,
+.key.key-right {
     background-color: var(--tile-answer-right);
     color: white;
     border: none;
 }
 
-.tile-wrong-place, .key.key-wrong-place {
+.tile-wrong-place,
+.key.key-wrong-place {
     background-color: var(--tile-answer-wrong-place);
     color: white;
     border: none;
 }
 
-
 /* Source for animation: https://www.w3schools.com/css/css3_animations.asp */
 .animated {
     animation: flip 1s ease;
-  }
+}
 
 @keyframes flip {
     0% {
-      transform: scaleY(1);
+        transform: scaleY(1);
     }
-    30% {
-      transform: scaleY(0);
+
+    50% {
+        transform: scaleY(0);
     }
+
     100% {
-      transform: scaleY(1);
-    }
-  }
-
-
-/* media queries to handle different screen widths and heights */
-/* for larger screens on a monitor */
-@media screen and (min-width: 1400px){
-
-    main {
-        height: 500px;
-        
-    }
-
-    h1 {
-        font-size: 2vw;
-    }
-
-    #board {
-        width: 280px;
-        height: 300px;
-    }
-
-    .boardWrapper {
-        align-items: flex-start;
-    }
-
-    .key {
-        height: 36px;
-        font-size: 1vw;
-    }
-
-    #keyBoard{
-        width: 40%;
-    }
-
-    .tiles{
-        font-size: 1.25vw;
-    }
-
-    .buttons{
-        width: 300px;
-        margin: auto;
-    }
-    
-    .btn{
-        font-size: 1.25rem;
-        
-    }
-
-    #answer{
-        font-size: 24px;
+        transform: scaleY(1);
     }
 }
-@media screen and (min-width: 1024px) and (max-width: 1390px) {
 
-    main {
-        height: 525px;
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .game-board {
+        max-width: 450px;
     }
 
-    h1 {
-        font-size: 36px;
-    }
-
-    #board {
-        width: 300px;
-        height: 320px;
-    }
-
-    .boardWrapper {
-        align-items: flex-start;
+    .tiles {
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
     }
 
     .key {
-        height: 40px;
-        font-size: 2vw;
+        font-size: 1rem;
+        padding: 1rem 0.5rem;
+        min-height: 3rem;
     }
 
-    #keyBoard{
-        width: 60%;
+    .key[id="Enter"],
+    .key[id="Backspace"] {
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .game-board {
+        max-width: 500px;
     }
 
-    .tiles{
-        font-size: 2.5vw;
-    }
-
-    .btn{
-        font-size: 1.25rem;
-        
-    }
-
-    #answer{
-        font-size: 24px;
-    }
-
-    .buttons{
-        width: 275px;
+    .tiles {
+        width: 50px;
+        height: 50px;
+        font-size: 2.25rem;
     }
 }
