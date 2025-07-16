@@ -38,8 +38,12 @@ body {
 #answer {
     color: var(--btn-hover);
     font-weight: bold;
-    margin-top: 1rem;
     min-height: 2rem;
+}
+
+hr{
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .btn-game {
