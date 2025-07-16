@@ -12,8 +12,6 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-const TMDB_API_KEY='eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODU5OTNjZDVjMzg1NjRkZWE2ZGRjYWQ0YzhjM2VhOCIsIm5iZiI6MTczMjE5MzEzMS41NTQxNDQxLCJzdWIiOiI2NjE5OTBhOGVhODRjNzAxNjQ1NjkyZjQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.G8aen0xt5tzssKMufnRH-Tc_2emuagdvaNnxsO_4y4k';
-
 // CORS middleware - must come before routes
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
