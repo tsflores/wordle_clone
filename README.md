@@ -5,7 +5,7 @@ Based on the popular New York Times Wordle game.
 This version utlilizes a simple server that makes the API call to Random Word with length of 5.  A free dictonary API is used to test whether the word guessed by the user is valid.
 
 The application makes use of 2 free APIs requiring no keys or tokens:
-- https://random-word-api.herokuapp.com/home
+- https://random-word-api.vercel.app/
 - https://dictionaryapi.dev/
 
 ## Live Demo

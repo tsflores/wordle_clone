@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
 }));
 
 app.get('/api/randomword', async (req, res) => {
-  const url = `https://random-word-api.herokuapp.com/word?length=5`;
+  const url = `https://random-word-api.vercel.app/api?words=1&length=5`;
 
   try {
     const response = await fetch(url, {
