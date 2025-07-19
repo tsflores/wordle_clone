@@ -1,5 +1,4 @@
 import express from 'express';
-// import dotenv from 'dotenv';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -7,10 +6,19 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+// Trust proxy for HTTPS behind reverse proxy
+app.set('trust proxy', 1);
+
+// Force HTTPS redirect
+app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+        return res.redirect(`https://${req.header('host')}${req.url}`);
+    }
+    next();
+});
 
 // CORS middleware - must come before routes
 app.use((req, res, next) => {
