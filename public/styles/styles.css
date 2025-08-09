@@ -28,12 +28,12 @@ body {
     font-family: var(--page-font-family);
     font-weight: bold;
     color: #212529;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 }
 
-.game-controls {
+/* .game-controls {
     margin-bottom: 1rem;
-}
+} */
 
 #answer {
     color: var(--btn-hover);
@@ -84,14 +84,14 @@ hr{
 }
 
 .tiles {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     border: 2px solid var(--tile-border-color);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem;
     background-color: white;
 }
 
@@ -121,9 +121,9 @@ hr{
     text-transform: uppercase;
     font-size: 1rem;
     width: 80px;
-    height: 100%;
-    /* max-width: 2.5rem;
-    min-height: 2.5rem; */
+    height: 80%;
+    max-width: 100px;
+    min-height: 2.5rem;
 }
 
 .key[id="Enter"],
@@ -132,7 +132,7 @@ hr{
     /* max-width: 6rem; */
     /* font-size: 1rem;
     height: 100%; */
-    background-color: black;
+    background-color: var(--btn-color);
     color: white;
 }
 
@@ -183,7 +183,7 @@ hr{
 
 
 /* Responsive adjustments */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .game-board {
         max-width: 450px;
     }
@@ -197,13 +197,13 @@ hr{
     .key {
         font-size: 1.5rem;
         padding: 1rem 0.5rem;
-        /* min-height: 3rem; */
+        min-height: 3rem;
     }
 
-    /* .key[id="Enter"],
+    .key[id="Enter"],
     .key[id="Backspace"] {
         font-size: 0.875rem;
-    } */
+    }
 }
 
 @media (min-width: 992px) {
@@ -216,4 +216,4 @@ hr{
         height: 50px;
         font-size: 2.25rem;
     }
-}
+} */
