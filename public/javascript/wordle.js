@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let arrKeys = [
       ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
       ["", "A", "S", "D", "F", "G", "H", "J", "K", "L", ""],
-      ["Enter", "Z", "X", "C", "V", "B", "N", "M", "del"],
+      ["del", "Z", "X", "C", "V", "B", "N", "M", "Enter"],
     ];
 
     keyBoard = document.getElementById("keyBoard"); //find the element and insert keyboard within it
@@ -336,7 +336,7 @@ function messageToUser() {
       message.innerText = "Well Done. You got the word in 5 tries."
       break;
     case 6:
-      message.innerText = "Nice work.  You correctly guessed the answer."
+      message.innerText = "Whew!  You correctly guessed the answer."
       break;
     default:
       message.innerText = "Thanks for playing.  The word was " + gameStatus.answer.toUpperCase();
